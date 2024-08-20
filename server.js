@@ -9,7 +9,7 @@ const io = socketio(server,{
     cors: {
         origin: "*",
         methods: ["GET", "POST"],
-        allowedHeaders: ["Content-Type", "Authorization", "Accept"], // Adjust as needed
+        allowedHeaders: ["*"], // Adjust as needed
         credentials: true
     }
   });
