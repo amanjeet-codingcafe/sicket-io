@@ -11,7 +11,7 @@
   <script>
     const room = 'gta2eZbqQWMzHvp3szrV'; // Specify the room name
 
-    const socket = io('https://phpstack-597346-4829352.cloudwaysapps.com:3015');
+    const socket = io('https://phpstack-597346-4829352.cloudwaysapps.com');
 
     socket.on('connect', () => {
       console.log('Connected to server');
@@ -24,7 +24,7 @@
     });
 
     document.getElementById('sendNotification').addEventListener('click', () => {
-      fetch('https://phpstack-597346-4829352.cloudwaysapps.com:3015/send', {
+      fetch('https://phpstack-597346-4829352.cloudwaysapps.com/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
