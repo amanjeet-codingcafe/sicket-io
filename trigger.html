@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Socket.IO Test</title>
+  <script src="https://cdn.socket.io/4.4.0/socket.io.min.js"></script>
+</head>
+<body>
+  <h1>Socket.IO Test</h1>
+  <button id="sendNotification">Send Notification</button>
+
+  <script>
+    const room = 'gta2eZbqQWMzHvp3szrV'; // Specify the room name
+
+    const socket = io('https://phpstack-597346-4829352.cloudwaysapps.com:3012');
+
+    socket.on('connect', () => {
+      console.log('Connected to server');
+      // Join the specified room
+      socket.emit('joinRoom', room);
+    });
+
+    socket.on('message', (data) => {
+      console.log('Message received:', data);
+    });
+
+    document.getElementById('sendNotification').addEventListener('click', () => {
+      fetch('https://phpstack-597346-4829352.cloudwaysapps.com:3012/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          room_id: room,
+          message: 'Hello from this browser!'
+        })
+      })
+      .then(response => response.json())
+      .then(data => console.log('Server response:', data))
+      .catch(error => console.error('Error:', error));
+    });
+  </script>
+</body>
+</html>
